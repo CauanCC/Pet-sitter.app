@@ -1,44 +1,30 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/types';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
-
-export default function HomeScreen({ navigation }: Props) {
-  const handleOwnerPress = () => {
-    try {
-      navigation.navigate('Owner');
-    } catch (error) {
-      console.error('Erro ao navegar:', error);
-    }
-  };
-
-  const handleSitterPress = () => {
-    alert('Pet Sitter App em breve');
-  };
-
+export default function HomeScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Pet Sitting App 🐾</Text>
+      <Text style={styles.title}>Bem-vindo ao Pet Sitting 🐾</Text>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleOwnerPress}
-        activeOpacity={0.7}
-      >
-        <Text style={styles.buttonText}>Sou Dono de Pet</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Login"
+          onPress={() => navigation.navigate('Login')} // Navega para a tela de Login
+        />
+        <View style={{ marginVertical: 10 }} />
+        <Button
+          title="Registrar"
+          onPress={() => navigation.navigate('Register')} // Navega para a tela de Registro
+        />
+      </View>
 
-      <TouchableOpacity
-        style={[styles.button, styles.buttonSecondary]}
-        onPress={handleSitterPress}
-        activeOpacity={0.7}
-      >
-        <Text style={[styles.buttonText, styles.buttonTextSecondary]}>
-          Sou Pet Sitter
-        </Text>
-      </TouchableOpacity>
+      <View style={styles.sitterContainer}>
+        <Button
+          title="Sou um Pet Sitter"
+          onPress={() => alert('Funcionalidade para Pet Sitter em breve!')}
+          color="#841584"
+        />
+      </View>
     </View>
   );
 }
@@ -47,37 +33,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#f5f5f5',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 50,
-    color: '#333',
   },
-  button: {
-    width: '100%',
-    maxWidth: 300,
-    backgroundColor: '#007AFF',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 10,
-    marginBottom: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
+  buttonContainer: {
+    marginHorizontal: 30,
   },
-  buttonSecondary: {
-    backgroundColor: '#F0F0F0',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  buttonTextSecondary: {
-    color: '#333',
+  sitterContainer: {
+    marginTop: 60,
+    marginHorizontal: 50,
   },
 });

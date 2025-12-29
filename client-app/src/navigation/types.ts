@@ -1,10 +1,15 @@
 export type RootStackParamList = {
-  Home: undefined;
-  Owner: undefined;
+  Login: undefined;
+  Register: undefined;
+  Main: undefined;
+  CreatePet: { petId?: string } | undefined;
+  CreateBooking: undefined;
 };
 
-export type OwnerStackParamList = {
-  OwnerHome: undefined;
+export type MainTabParamList = {
+  Pets: undefined;
+  CreateBooking: undefined;
+  User: undefined;
 };
 
 declare global {
